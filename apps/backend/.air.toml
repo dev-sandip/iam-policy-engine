@@ -1,0 +1,41 @@
+root = "."
+tmp_dir = "tmp"
+testdata_dir = "testdata"
+
+[build]
+  cmd = "go build -o ./tmp/main ./cmd/api"
+  bin = "./tmp/main"
+  delay = 500                       # shorter rebuild delay
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_regex = ["_test.go"]
+  include_dir = ["cmd", "internal", "static"]
+  include_ext = ["go", "html", "tpl", "tmpl"]
+  log = "build-errors.log"
+  kill_delay = "200ms"
+  stop_on_error = false
+  send_interrupt = true             # graceful shutdown for HTTP servers
+  rerun = true                      # rerun binary if already running
+  rerun_delay = 300
+  pre_cmd = ["clear"]
+  post_cmd = []
+  full_bin = ""
+  follow_symlink = false
+
+[color]
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"
+  app = "iam-policy-engine"
+  main = "magenta"
+
+[log]
+  time = true
+  silent = false
+  main_only = true                 # hide watcher/build spam
+
+[misc]
+  clean_on_exit = true             # auto-clean tmp on exit
+
+[screen]
+  clear_on_rebuild = true          # cleaner rebuild output
+  keep_scroll = false

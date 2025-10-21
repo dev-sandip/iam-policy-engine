@@ -10,6 +10,7 @@ import (
 	"github.com/knadh/koanf/v2"
 	"github.com/rs/zerolog"
 )
+
 type Config struct {
 	Primary       Primary              `koanf:"primary" validate:"required"`
 	Server        ServerConfig         `koanf:"server" validate:"required"`
